@@ -34,7 +34,7 @@ myfile.close()
 
 # to get around this the following syntax is used:
 with open('test.txt') as new_file:
-    contents = my_new_file.read()
+    contents = new_file.read()
 print(contents)
 
 # reading and writing to files
@@ -47,9 +47,14 @@ file_options = ['a - append', 'w - overwrite', 'r - read',
 # w+ will create a new file for reading and writing if no file exists
 print(file_options)
 
-with open('readme.txt', 'w+') as f:
-    f.write('this is a readme \n')
-    f.writelines(['Line one', 'Line two','Line three'])
-    print(f.read())
+f = open('readme.txt', mode='w+')
+f.write('this is a readme \n')
+f.writelines(['Line one \n', 'Line two \n','Line three \n'])
+f.seek(0)
+fileread = f.read()
+f.close()
+
+print(fileread)
+
 # creates new file called readme using w+ mode
 # writes to it, then writes the 3 lines of the list to it
